@@ -22,5 +22,23 @@ public class SubArraySum {
         return new int[]{-1};
     }
 
+    public int[] oCheck(int[] a,int s) {
+        int currentSum=a[0],start=0;
+
+        for (int i = 1; i < a.length; i++) {
+
+            currentSum += a[i];
+
+            while (currentSum>s && start<i){
+                currentSum-=a[start];
+                start++;
+            }
+
+            if (currentSum == s)
+                return new int[]{start + 1, i + 1};
+        }
+        return new int[]{-1};
+    }
+
 
 }
